@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение размера блока</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #resizableBlock {
+            border: 1px solid #ccc;
+            resize: both;
+            overflow: hidden;
+            width: 300px;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #resizeHandle {
+            width: 10px;
+            height: 10px;
+            background-color: #3498db;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: se-resize;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="resizableBlock">
+        <div id="resizeHandle"></div>
+        <p>Это блок текста в рамочке. Попробуйте изменить его размер, зажав мышку в правом нижнем углу.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var resizableBlock = document.getElementById('resizableBlock');
+            var resizeHandle = document.getElementById('resizeHandle');
+            var isResizing = false;
+            var startX, startY, startWidth, startHeight;
+
+            resizeHandle.addEventListener('mousedown', function (event) {
+                isResizing = true;
+                startX = event.clientX;
+                startY = event.clientY;
+                startWidth = parseInt(document.defaultView.getComputedStyle(resizableBlock).width, 10);
+                startHeight = parseInt(document.defaultView.getComputedStyle(resizableBlock).height, 10);
+
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', function () {
+                    isResizing = false;
+                    document.removeEventListener('mousemove', handleMouseMove);
+                });
+            });
+
+            function handleMouseMove(event) {
+                if (isResizing) {
+                    var width = startWidth + (event.clientX - startX);
+                    var height = startHeight + (event.clientY - startY);
+                    resizableBlock.style.width = width + 'px';
+                    resizableBlock.style.height = height + 'px';
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

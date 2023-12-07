@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запрет выделения текста и контекстного меню</title>
+    <style>
+        body {
+            user-select: none;
+            /* Запрещаем выделение текста */
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;"> <!-- Отключаем контекстное меню -->
+
+    <h1>Ваше содержимое страницы</h1>
+    <p>Здесь может быть любой текст или другие элементы.</p>
+
+</body>
+
+</html>

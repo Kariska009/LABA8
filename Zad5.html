@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница со списком статей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Список статей</h1>
+    </header>
+
+    <main>
+        <!-- Здесь может быть ваш список статей -->
+        <article>
+            <h2>Заголовок статьи 1</h2>
+            <p>Текст статьи 1...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 2</h2>
+            <p>Текст статьи 2...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 3</h2>
+            <p>Текст статьи 3...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 4</h2>
+            <p>Текст статьи 4...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 5</h2>
+            <p>Текст статьи 5...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 6</h2>
+            <p>Текст статьи 6...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 7</h2>
+            <p>Текст статьи 7...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 2</h2>
+            <p>Текст статьи 2...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 8</h2>
+            <p>Текст статьи 8...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 9</h2>
+            <p>Текст статьи 9...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 10</h2>
+            <p>Текст статьи 10...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 11</h2>
+            <p>Текст статьи 11...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 12</h2>
+            <p>Текст статьи 12...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 13</h2>
+            <p>Текст статьи 13...</p>
+        </article>
+
+        <article>
+            <h2>Заголовок статьи 14</h2>
+            <p>Текст статьи 14...</p>
+        </article>
+
+        <!-- Добавьте еще статей по необходимости -->
+    </main>
+
+    <button id="scrollTopBtn" onclick="scrollToTop()">Вверх</button>
+
+    <footer>
+        &copy; 2023 Ваше Имя
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            showScrollTopButton();
+        };
+
+        function showScrollTopButton() {
+            var scrollTopBtn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.style.display = 'block';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+</body>
+
+</html>

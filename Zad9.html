@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 5px;
+            margin: 5px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        li.selected {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Список книг</h1>
+
+    <ul id="bookList">
+        <li>Книга 1</li>
+        <li>Книга 2</li>
+        <li>Книга 3</li>
+        <li>Книга 4</li>
+        <li>Книга 5</li>
+        <!-- Добавьте другие книги по необходимости -->
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var bookList = document.getElementById('bookList');
+            var selectedBooks = [];
+            var lastClickedIndex = -1;
+
+            bookList.addEventListener('click', function (event) {
+                var clickedIndex = Array.from(bookList.children).indexOf(event.target);
+
+                if (event.ctrlKey) {
+                    // Если зажата клавиша Ctrl
+                    toggleSelection(clickedIndex);
+                } else if (event.shiftKey && lastClickedIndex !== -1) {
+                    // Если зажата клавиша Shift
+                    selectRange(lastClickedIndex, clickedIndex);
+                } else {
+                    // Простой клик без Ctrl и Shift
+                    clearSelection();
+                    toggleSelection(clickedIndex);
+                }
+
+                lastClickedIndex = clickedIndex;
+            });
+
+            function toggleSelection(index) {
+                if (selectedBooks.includes(index)) {
+                    selectedBooks = selectedBooks.filter(item => item !== index);
+                } else {
+                    selectedBooks.push(index);
+                }
+
+                updateSelection();
+            }
+
+            function selectRange(start, end) {
+                var startIndex = Math.min(start, end);
+                var endIndex = Math.max(start, end);
+
+                for (var i = startIndex; i <= endIndex; i++) {
+                    if (!selectedBooks.includes(i)) {
+                        selectedBooks.push(i);
+                    }
+                }
+
+                updateSelection();
+            }
+
+            function clearSelection() {
+                selectedBooks = [];
+                updateSelection();
+            }
+
+            function updateSelection() {
+                var listItems = bookList.getElementsByTagName('li');
+
+                for (var i = 0; i < listItems.length; i++) {
+                    if (selectedBooks.includes(i)) {
+                        listItems[i].classList.add('selected');
+                    } else {
+                        listItems[i].classList.remove('selected');
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

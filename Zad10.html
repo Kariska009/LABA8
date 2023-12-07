@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отображение/редактирование текста</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #textContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="textContainer" contenteditable="true">
+        Это пример текста. Нажмите Ctrl + E для редактирования.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var textContainer = document.getElementById('textContainer');
+            var originalText = textContainer.innerText;
+
+            document.addEventListener('keydown', function (event) {
+                if (event.ctrlKey && event.key === 'E') {
+                    event.preventDefault();
+                    enableEditMode();
+                } else if (event.ctrlKey && event.key === 'S') {
+                    event.preventDefault();
+                    disableEditMode();
+                }
+            });
+
+            function enableEditMode() {
+                textContainer.contentEditable = 'true';
+                textContainer.focus();
+            }
+
+            function disableEditMode() {
+                textContainer.contentEditable = 'false';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

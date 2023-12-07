@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопка Like с счетчиком</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+
+        #likeButton {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Счетчик лайков</h1>
+
+    <button id="likeButton" onclick="incrementLikes()">Like</button>
+    <p id="likeCount">0</p>
+
+    <script>
+        var likeCount = 0;
+
+        function incrementLikes() {
+            likeCount++;
+            document.getElementById('likeCount').innerHTML = likeCount;
+        }
+    </script>
+
+</body>
+
+</html>

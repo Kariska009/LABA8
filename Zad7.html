@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница со списком ссылок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .external-link {
+            border-bottom: 1px dashed #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Список ссылок</h1>
+
+    <ul id="linkList">
+        <li><a href="index.html">indekx.html</a></li>
+        <li><a href="https://">http://https://google.com</a></li>
+        <li><a href="https://itstep.org">http:https://itstep.org</a></li>
+        <li><a href="/images/cat.jpg">/images/cat.jpg</a></li>
+        <li><a href="/local/path">Вhttp:/local/path</a></li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var linkList = document.getElementById('linkList');
+            var links = linkList.getElementsByTagName('a');
+
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].getAttribute('href') && links[i].getAttribute('href').startsWith('https://')) {
+                    links[i].classList.add('external-link');
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

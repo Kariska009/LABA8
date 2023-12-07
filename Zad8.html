@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дерево вложенных директорий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            font-weight: bold;
+        }
+
+        .folder {
+            cursor: pointer;
+        }
+
+        .folder:before {
+            content: '📁 ';
+            margin-right: 5px;
+        }
+
+        .file:before {
+            content: '📄 ';
+            margin-right: 5px;
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .nested.open {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>This pc </h1>
+
+    <ul id="directoryTree">
+        <li class="folder">Local Disk (C:)
+            <ul class="nested">
+                <li class="file">Program files</li>
+                <li class="file">Users</li>
+                <li class="file">Windows</li>
+            </ul>
+        </li>
+        <li class="folder">Local Disk (D:)
+            <ul class="nested">
+                <li class="file">We Were Here Forever</li>
+                <li class="file">Honkai: Star Rail</li>
+                <li class="file">Valorant</li>
+            </ul>
+        </li>
+    </ul>
+    </li>
+    <li class="folder">Local Disk (E:)
+        <ul class="nested">
+            <li class="file">Genshin Impact</li>
+            <li class="file">Sims</li>
+        </ul>
+    </li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggler = document.getElementsByClassName('folder');
+
+            for (var i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener('click', function () {
+                    this.classList.toggle('folder-open');
+                    var nestedList = this.querySelector('.nested');
+                    if (nestedList) {
+                        nestedList.classList.toggle('open');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

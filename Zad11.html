@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сортировка таблицы</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Таблица данных</h1>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Имя</th>
+                <th onclick="sortTable(1)">Возраст</th>
+                <th onclick="sortTable(2)">Компания</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Анна</td>
+                <td>25</td>
+                <td>Гугл</td>
+            </tr>
+            <tr>
+                <td>Иван</td>
+                <td>30</td>
+                <td>Яндекс</td>
+            </tr>
+            <tr>
+                <td>Елена</td>
+                <td>22</td>
+                <td>Опера</td>
+            </tr>
+            <!-- Добавьте другие строки по необходимости -->
+        </tbody>
+    </table>
+
+    <script>
+        function sortTable(columnIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("data-table");
+            switching = true;
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < rows.length - 1; i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("td")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+                    if (isNumeric(x.innerHTML)) {
+                        shouldSwitch = parseInt(x.innerHTML) > parseInt(y.innerHTML);
+                    } else {
+                        shouldSwitch = x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase();
+                    }
+
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        function isNumeric(str) {
+            return /^\d+$/.test(str);
+        }
+    </script>
+
+</body>
+
+</html>

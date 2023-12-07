@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение фона ячейки при наведении</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="myTable">
+        <tr>
+            <td>Ячейка 1-1</td>
+            <td>Ячейка 1-2</td>
+            <td>Ячейка 1-3</td>
+        </tr>
+        <tr>
+            <td>Ячейка 2-1</td>
+            <td>Ячейка 2-2</td>
+            <td>Ячейка 2-3</td>
+        </tr>
+        <tr>
+            <td>Ячейка 3-1</td>
+            <td>Ячейка 3-2</td>
+            <td>Ячейка 3-3</td>
+        </tr>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var table = document.getElementById('myTable');
+            var cells = table.getElementsByTagName('td');
+
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].addEventListener('mouseover', function () {
+                    this.style.backgroundColor = 'lightblue';
+                });
+
+                cells[i].addEventListener('mouseout', function () {
+                    this.style.backgroundColor = '';
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
